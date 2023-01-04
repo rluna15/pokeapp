@@ -1,6 +1,26 @@
-<script setup>
+<script>
+import { onMounted } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  setup() {
+    let pokes;
+
+    onMounted(() => {
+      let url = "https://pokeapi.co/api/v2/pokemon?limit=9";
+
+      fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results);
+        pokes = data.results;
+        console.log("pokes: ", pokes);
+      })
+    })
+  }
+}
+
 </script>
 
 <template>
