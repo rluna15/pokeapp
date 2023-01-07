@@ -1,29 +1,37 @@
 <script>
-import { onMounted } from '@vue/runtime-core'
+import { onMounted, ref } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 
 export default {
+  name: 'Home',
   setup() {
-    let pokes;
+    const pokes = ref([])
 
     onMounted(() => {
-      let url = "https://pokeapi.co/api/v2/pokemon?limit=9";
+      let url = "../src/data/pokelist.json";
 
       fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
-        pokes = data.results;
-        console.log("pokes: ", pokes);
+        pokes.value = data;
       })
     })
+
+    return { pokes }
   }
 }
 
 </script>
 
 <template>
-
+  <div v-if="pokes.length">
+    <ul>
+      <li v-for="(poke,index) in pokes" :key="index">
+        {{ poke.name }}
+      </li>
+    </ul>
+  </div>
+  <div v-else>Loading ...</div>
 </template>
 
 <style scoped>
