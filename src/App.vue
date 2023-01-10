@@ -2,38 +2,30 @@
 import { onMounted, ref } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 
+import { getPokeList } from './composables/getPokeList'
+
 import Spinner from './components/Spinner.vue'
+
 export default {
   name: 'Home',
   components: { Spinner },
   setup() {
-    const pokes = ref([])
+    const { getList, pokeList, error } = getPokeList(100)
 
-    onMounted(() => {
-      let url = "../src/data/pokelist.json";
-
-      fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        pokes.value = data;
-      })
-    })
-
-    return { pokes }
+    getList()
+    return { pokeList, error }
   }
 }
 
 </script>
 
 <template>
-  <div v-if="pokes.length">
+  <div v-if="error">{{ error }}</div>
+  <div v-if="pokeList.length">
     <ul>
-      <li v-for="(poke,index) in pokes" :key="index">
-        {{ poke.name }}
-      </li>
+      <li v-for="(poke, index) in pokeList" :key="index">{{ poke.name }}</li>
     </ul>
   </div>
-  <div v-else>Loading ...</div>
   <div v-else><spinner/></div>
 </template>
 
