@@ -2,8 +2,10 @@
 import { onMounted, ref } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 
+import Spinner from './components/Spinner.vue'
 export default {
   name: 'Home',
+  components: { Spinner },
   setup() {
     const pokes = ref([])
 
@@ -32,6 +34,7 @@ export default {
     </ul>
   </div>
   <div v-else>Loading ...</div>
+  <div v-else><spinner/></div>
 </template>
 
 <style scoped>
