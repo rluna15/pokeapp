@@ -5,12 +5,13 @@ import { RouterLink, RouterView } from 'vue-router'
 import { getPokeList } from './composables/getPokeList'
 
 import Spinner from './components/Spinner.vue'
+import PokeCard from './components/PokeCard.vue'
 
 export default {
   name: 'Home',
-  components: { Spinner },
+  components: { Spinner, PokeCard },
   setup() {
-    const { getList, pokeList, error } = getPokeList(100)
+    const { getList, pokeList, error } = getPokeList(1)
 
     getList()
     return { pokeList, error }
@@ -22,9 +23,9 @@ export default {
 <template>
   <div v-if="error">{{ error }}</div>
   <div v-if="pokeList.length">
-    <ul>
-      <li v-for="(poke, index) in pokeList" :key="index">{{ poke.name }}</li>
-    </ul>
+    <div v-for="(poke, index) in pokeList" :key="index">
+      <poke-card :poke="poke"/>
+    </div>
   </div>
   <div v-else><spinner/></div>
 </template>
