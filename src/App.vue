@@ -22,7 +22,7 @@ export default {
 
 <template>
   <div v-if="error">{{ error }}</div>
-  <div v-if="pokeList.length">
+  <div class="list-container" v-if="pokeList.length">
     <div v-for="(poke, index) in pokeList" :key="index">
       <poke-card :poke="poke"/>
     </div>
@@ -31,6 +31,12 @@ export default {
 </template>
 
 <style scoped>
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

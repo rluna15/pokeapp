@@ -1,8 +1,5 @@
 <template>
-    <div>
-        <img :src="poke.sprites.front_default" alt="">
-        <span>{{ poke.name }}</span>
-    </div>
+    <img class="card-img" :src="poke.sprites.front_default" :alt="poke.name">
 </template>
 
 <script>
@@ -15,4 +12,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card-img:hover{
+    outline: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+</style>
