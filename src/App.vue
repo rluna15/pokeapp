@@ -2,41 +2,23 @@
 import { onMounted, ref } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 
-import { getPokeList } from './composables/getPokeList'
-
-import Spinner from './components/Spinner.vue'
-import PokeCard from './components/PokeCard.vue'
+import PokeList from './components/PokeList.vue';
 
 export default {
   name: 'Home',
-  components: { Spinner, PokeCard },
+  components: { PokeList },
   setup() {
-    const { getList, pokeList, error } = getPokeList(1)
 
-    getList()
-    return { pokeList, error }
   }
 }
 
 </script>
 
 <template>
-  <div v-if="error">{{ error }}</div>
-  <div class="list-container" v-if="pokeList.length">
-    <div v-for="(poke, index) in pokeList" :key="index">
-      <poke-card :poke="poke"/>
-    </div>
-  </div>
-  <div v-else><spinner/></div>
+  <poke-list/>
 </template>
 
 <style scoped>
-.list-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 header {
   line-height: 1.5;
   max-height: 100vh;

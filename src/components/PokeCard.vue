@@ -6,7 +6,6 @@
 export default {
     props: ['poke'],
     setup(props) {
-        console.log(props.poke.name)
         return {  }
     },
 };
