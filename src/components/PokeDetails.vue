@@ -50,7 +50,7 @@
                     </table>
                 </dd>
             </dl>
-            <dl>
+            <dl class="moves">
                 <dt class="heading">Moves:</dt>
                 <dd>
                     <ul>
@@ -11627,6 +11627,7 @@ export default {
 }
 .title .name {
     text-transform: capitalize;
+    font-weight: bold;
 }
 dl {
     margin-left: 2em;
@@ -11649,5 +11650,14 @@ dl {
     font-weight: bold;
     padding-left: 1rem;
     text-align: right;
+}
+.moves {
+    width: 100%;
+}
+.moves ul {
+    padding: 0;
+}
+.moves li {
+    list-style: none;
 }
 </style>
