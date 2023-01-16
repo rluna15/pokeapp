@@ -1,7 +1,7 @@
 <template>
     <div class="details-container" v-if="pokeInfo != null">
         <div class="title">
-            <a href="">Pokedex</a>
+            <a href="">&lsaquo; Pokedex</a>
             <h1 class="name">
                 <img
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
