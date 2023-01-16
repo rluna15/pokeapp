@@ -1,5 +1,5 @@
 <template>
-    <a class="type" :class="type.name" :href="type.url">{{ type.name }}</a>
+    <a class="type" :class="type.name">{{ type.name }}</a>
 </template>
 
 <script>
@@ -23,6 +23,10 @@ export default {
     border: 1px solid;
     border-radius: 5px;
     display: block;
+}
+a:hover {
+    background-color: transparent;
+    cursor: default;
 }
 .grass {
     color: #78c850
