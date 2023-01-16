@@ -3,10 +3,11 @@ import { onMounted, ref } from '@vue/runtime-core'
 import { RouterLink, RouterView } from 'vue-router'
 
 import PokeList from './components/PokeList.vue';
+import PokeDetails from './components/PokeDetails.vue';
 
 export default {
   name: 'Home',
-  components: { PokeList },
+  components: { PokeList, PokeDetails },
   setup() {
 
   }
@@ -15,7 +16,8 @@ export default {
 </script>
 
 <template>
-  <poke-list/>
+  <!-- <poke-list/> -->
+  <poke-details/>
 </template>
 
 <style scoped>
