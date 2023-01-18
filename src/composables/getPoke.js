@@ -19,5 +19,5 @@ export function getPoke(id) {
         }
     }
 
-    return { pokeInfo, getInfo, error }
+    return { pokeInfo, getPokeInfo, error }
 }
