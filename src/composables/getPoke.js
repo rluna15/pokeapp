@@ -4,7 +4,7 @@ export function getPoke(id) {
     const pokeInfo = ref(null)
     const error = ref(null)
 
-    const getInfo = async () => {
+    const getPokeInfo = async () => {
         try {
             let data = await fetch('https://pokeapi.co/api/v2/pokemon/' + id)
 
