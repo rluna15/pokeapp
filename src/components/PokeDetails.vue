@@ -58,9 +58,7 @@
                             v-for="(move, index) in pokeInfo.moves"
                             :key="index"
                         >
-                            <a href="">
-                                {{ move.move.name }}
-                            </a>
+                        <move-button :move="move"/>
                         </li>
                     </ul>
                 </dd>
@@ -78,9 +76,10 @@ import { ref } from "vue";
 
 import Spinner from "./Spinner.vue";
 import TypeButton from "./TypeButton.vue";
+import MoveButton from "./MoveButton.vue";
 
 export default {
-    components: { Spinner, TypeButton },
+    components: { Spinner, TypeButton, MoveButton },
     name: "PokeDetails",
     props: ["poke"],
     setup() {
