@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td class="stat-value">1234</td>
+                                <td class="stat-value">{{ statTotal }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -11614,7 +11614,13 @@ export default {
             weight: 69,
         });
 
-        return { pokeInfo };
+        const statTotal = ref(null)
+        
+        pokeInfo.value.stats.map((stat) => {
+            statTotal.value += stat.base_stat
+        })
+
+        return { pokeInfo, statTotal };
     },
 };
 </script>
