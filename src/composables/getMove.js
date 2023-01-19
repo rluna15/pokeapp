@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
 export function getMove(moveUrl) {
-    const move = ref([])
+    const moveInfo = ref(null)
     const error = ref(null)
 
     const getMoveInfo = async () => {
@@ -12,7 +12,7 @@ export function getMove(moveUrl) {
                 throw Error("Could not fetch poke info")
             }
 
-            move.value = await data.json()
+            moveInfo.value = await data.json()
         } catch (err) {
             error.value = err.message
             console.log(error.value)
@@ -22,5 +22,5 @@ export function getMove(moveUrl) {
         
     }
 
-    return { move, getMoveInfo, error}
+    return { moveInfo, getMoveInfo, error}
 }
