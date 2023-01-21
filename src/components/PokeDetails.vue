@@ -68,6 +68,7 @@
     <div v-else>
         <spinner />
     </div>
+    <bar-chart/>
 </template>
 
 <script>
@@ -77,9 +78,10 @@ import { ref } from "vue";
 import Spinner from "./Spinner.vue";
 import TypeButton from "./TypeButton.vue";
 import MoveButton from "./MoveButton.vue";
+import BarChart from "./BarChart.vue";
 
 export default {
-    components: { Spinner, TypeButton, MoveButton },
+    components: { Spinner, TypeButton, MoveButton, BarChart },
     name: "PokeDetails",
     props: ["poke"],
     setup() {
