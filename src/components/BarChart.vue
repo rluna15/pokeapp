@@ -1,44 +1,56 @@
 <template>
     <div>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData"/>
+        <Radar id="my-chart-id" :options="chartOptions" :data="chartData"/>
     </div>
 </template>
 
 <script>
-import { Bar } from "vue-chartjs";
+import { Radar } from "vue-chartjs";
 import {
     Chart as ChartJS,
-    Title,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
     Tooltip,
-    Legend,
-    BarElement,
-    CategoryScale,
-    LinearScale,
+    Legend
 } from "chart.js";
 
 import { ref } from "@vue/reactivity";
 
 ChartJS.register(
-    Title,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
     Tooltip,
-    Legend,
-    BarElement,
-    CategoryScale,
-    LinearScale,
+    Legend
 );
 
 export default {
     name: "BarChart",
-    components: { Bar },
+    components: { Radar },
     setup() {
         const chartData = {
-            labels: ["January", "February", "March"],
-            datasets: [{ data: [40, 20, 12] }],
+            labels: ["Hp", "Attack", "Defence", "Special-attack", "Special-defense", "Speed"],
+            datasets: [
+                { 
+                    label: 'Bulbasour',
+                    data: [45, 49, 49, 65, 65, 45],
+                    borderColor: 'rgba(179,181,198, 1)',
+                    backgroundColor: 'rgba(179,181,198, 0.5)'
+                }
+            ],
         }
 
         const chartOptions = {
             chartOptions: {
-                responsive: true
+                responsive: true,
+                scales: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
             }
         }
 

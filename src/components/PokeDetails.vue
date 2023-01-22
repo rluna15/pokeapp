@@ -58,7 +58,7 @@
                             v-for="(move, index) in pokeInfo.moves"
                             :key="index"
                         >
-                        <move-button :move="move"/>
+                        <!-- <move-button :move="move"/> -->
                         </li>
                     </ul>
                 </dd>
