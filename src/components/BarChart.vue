@@ -23,7 +23,6 @@ ChartJS.register(
     PointElement,
     LineElement,
     Filler,
-    Tooltip,
     Legend
 );
 
@@ -39,24 +38,51 @@ export default {
                     data: [45, 49, 49, 65, 65, 45],
                     borderColor: 'rgba(179,181,198, 1)',
                     backgroundColor: 'rgba(179,181,198, 0.5)'
+                },
+                { 
+                    label: 'Charmander',
+                    data: [39, 52, 43, 60, 50, 65],
+                    borderColor: 'rgba(179,181,198, 1)',
+                    backgroundColor: 'rgba(17,181,19, 0.5)'
                 }
             ],
         }
 
         const chartOptions = {
-            chartOptions: {
-                responsive: true,
-                scales: {
+            responsive: true,
+            elements: {
+                line: {
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: {
+                        color: 'white'
+                    },
+                    pointLabels: {
+                        color: 'white'
+                    },
+                    grid: {
+                        color: 'white',
+                    },
                     ticks: {
-                        beginAtZero: true
-                    }
+                        color: 'white',
+                        backdropColor: 'rgba(0,0,0,0)',
+                    },
+                    min: 0
                 }
             }
         }
 
-        return { chartData, chartOptions };
+        return { chartData, chartOptions};
     },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+#my-chart-id {
+    height: 100% !important;
+    width: 100% !important;
+}
+</style>
