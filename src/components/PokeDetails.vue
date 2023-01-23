@@ -11622,6 +11622,9 @@ export default {
             statTotal.value += stat.base_stat
         })
 
+        pokeInfo.value.height = (pokeInfo.value.height / 10)
+        pokeInfo.value.weight = (pokeInfo.value.weight / 10)
+
         return { pokeInfo, statTotal };
     },
 };
