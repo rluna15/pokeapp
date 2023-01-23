@@ -31,7 +31,7 @@ export default {
     components: { Radar },
     setup() {
         const chartData = {
-            labels: ["Hp", "Attack", "Defence", "Special-attack", "Special-defense", "Speed"],
+            labels: ["Hp", "Attack", "Defence", "Sp-Attack", "Sp-Defense", "Speed"],
             datasets: [
                 { 
                     label: 'Bulbasour',
@@ -42,7 +42,7 @@ export default {
                 { 
                     label: 'Charmander',
                     data: [39, 52, 43, 60, 50, 65],
-                    borderColor: 'rgba(179,181,198, 1)',
+                    borderColor: 'rgba(17,181,19, 1)',
                     backgroundColor: 'rgba(17,181,19, 0.5)'
                 }
             ],
@@ -58,19 +58,32 @@ export default {
             scales: {
                 r: {
                     angleLines: {
-                        color: 'white'
+                        color: 'rgba(255,255,255, 0.5)'
                     },
                     pointLabels: {
-                        color: 'white'
+                        color: 'white',
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
                     },
                     grid: {
-                        color: 'white',
+                        color: 'rgba(255,255,255, 0.5)',
                     },
                     ticks: {
-                        color: 'white',
+                        color: 'rgba(255,255,255, 0.5)',
                         backdropColor: 'rgba(0,0,0,0)',
                     },
                     min: 0
+                },
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 10,
+                        boxHeight: 10
+                    }
                 }
             }
         }
