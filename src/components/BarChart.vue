@@ -61,7 +61,7 @@ export default {
                         color: 'rgba(255,255,255, 0.5)'
                     },
                     pointLabels: {
-                        color: 'white',
+                        color: 'rgba(235, 235, 235, 0.64)',
                         font: {
                             size: 12,
                             weight: 'bold'
