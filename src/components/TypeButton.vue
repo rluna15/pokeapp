@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .type {
-    display: inline;
+    width: 70px;
     font-size:x-small;
     text-align: center;
     text-transform: uppercase;
@@ -22,7 +22,7 @@ export default {
     margin-top: 5px;
     border: 1px solid;
     border-radius: 5px;
-    display: block;
+    display: inline-block;
 }
 a:hover {
     background-color: transparent;
