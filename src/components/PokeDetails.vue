@@ -49,6 +49,9 @@
                         </tbody>
                     </table>
                 </dd>
+                <dd>
+                    <bar-chart/>
+                </dd>
             </dl>
             <dl class="moves">
                 <dt class="heading">Moves:</dt>
@@ -58,7 +61,7 @@
                             v-for="(move, index) in pokeInfo.moves"
                             :key="index"
                         >
-                        <!-- <move-button :move="move"/> -->
+                        <move-button :move="move"/>
                         </li>
                     </ul>
                 </dd>
@@ -68,7 +71,6 @@
     <div v-else>
         <spinner />
     </div>
-    <bar-chart/>
 </template>
 
 <script>

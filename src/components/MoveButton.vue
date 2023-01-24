@@ -33,6 +33,12 @@ export default {
     text-transform: capitalize;
 }
 .move-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: space-between;
+}
+
+.move-container > span:not(:first-child) {
+    text-align: center;
 }
 </style>
