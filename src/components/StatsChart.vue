@@ -27,24 +27,23 @@ ChartJS.register(
 );
 
 export default {
-    name: "BarChart",
     name: "StatsChart",
     components: { Radar },
-    setup() {
+    props: ['stats', 'name'],
+    setup(props) {
+        const pokeName = props.name.charAt(0).toUpperCase() + props.name.slice(1)
+        const stats = props.stats.map(stat => {
+            return stat.base_stat
+        })
+
         const chartData = {
             labels: ["Hp", "Attack", "Defence", "Sp-Attack", "Sp-Defense", "Speed"],
             datasets: [
                 { 
-                    label: 'Bulbasour',
-                    data: [45, 49, 49, 65, 65, 45],
+                    label: pokeName,
+                    data: stats,
                     borderColor: 'rgba(179,181,198, 1)',
                     backgroundColor: 'rgba(179,181,198, 0.5)'
-                },
-                { 
-                    label: 'Charmander',
-                    data: [39, 52, 43, 60, 50, 65],
-                    borderColor: 'rgba(17,181,19, 1)',
-                    backgroundColor: 'rgba(17,181,19, 0.5)'
                 }
             ],
         }

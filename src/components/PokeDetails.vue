@@ -50,7 +50,7 @@
                     </table>
                 </dd>
                 <dd>
-                    <bar-chart/>
+                    <stats-chart :stats="pokeInfo.stats" :name="pokeInfo.name"/>
                 </dd>
             </dl>
             <dl class="moves">
@@ -80,10 +80,10 @@ import { ref } from "vue";
 import Spinner from "./Spinner.vue";
 import TypeButton from "./TypeButton.vue";
 import MoveButton from "./MoveButton.vue";
-import BarChart from "./BarChart.vue";
+import StatsChart from "./StatsChart.vue";
 
 export default {
-    components: { Spinner, TypeButton, MoveButton, BarChart },
+    components: { Spinner, TypeButton, MoveButton, StatsChart },
     name: "PokeDetails",
     props: ["poke"],
     setup() {
