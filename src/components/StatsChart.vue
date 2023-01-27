@@ -28,6 +28,7 @@ ChartJS.register(
 
 export default {
     name: "BarChart",
+    name: "StatsChart",
     components: { Radar },
     setup() {
         const chartData = {
