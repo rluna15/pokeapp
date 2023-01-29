@@ -1,6 +1,6 @@
 <template>
     <a class="move-container">
-        <span class="move-name">{{ move.move.name }}</span>
+        <span class="move-name">{{move.version_group_details[move.version_group_details.length -1 ].level_learned_at}} - {{ move.move.name }}</span>
         <span v-if="moveInfo"><type-button :type="moveInfo.type"/></span>
         <span v-if="moveInfo">{{ moveInfo.damage_class.name }}</span>
         <span v-if="moveInfo">Power: {{ moveInfo.power }}</span>
