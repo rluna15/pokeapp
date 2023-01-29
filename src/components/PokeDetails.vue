@@ -11652,6 +11652,10 @@ export default {
         const levelUpMoves = useSortMoves(pokeInfo.value.moves, "level-up")
         const tutorMoves = useSortMoves(pokeInfo.value.moves, "tutor")
 
+        levelUpMoves.sort((a, b) => {
+            return a.version_group_details[a.version_group_details.length - 1].level_learned_at - b.version_group_details[b.version_group_details.length - 1].level_learned_at 
+        })
+
         const statTotal = ref(null)
 
         pokeInfo.value.stats.map((stat) => {
