@@ -57,8 +57,36 @@
                 <dt class="heading">Moves:</dt>
                 <dd>
                     <ul>
+                        Level-Up Moves:
                         <li
-                            v-for="(move, index) in pokeInfo.moves"
+                            v-for="(move, index) in levelUpMoves"
+                            :key="index"
+                        >
+                        <move-button :move="move"/>
+                        </li>
+                    </ul>
+                    <ul>
+                        Machine Moves:
+                        <li
+                            v-for="(move, index) in machineMoves"
+                            :key="index"
+                        >
+                        <move-button :move="move"/>
+                        </li>
+                    </ul>
+                    <ul>
+                        Egg Moves:
+                        <li
+                            v-for="(move, index) in eggMoves"
+                            :key="index"
+                        >
+                        <move-button :move="move"/>
+                        </li>
+                    </ul>
+                    <ul>
+                        Tutor Moves:
+                        <li
+                            v-for="(move, index) in tutorMoves"
                             :key="index"
                         >
                         <move-button :move="move"/>
@@ -75,6 +103,7 @@
 
 <script>
 import { getPoke } from "../composables/getPoke";
+import { useSortMoves } from "../composables/useFilterMoves";
 import { ref } from "vue";
 
 import Spinner from "./Spinner.vue";
@@ -11617,9 +11646,14 @@ export default {
             ],
             weight: 69,
         });
+        
+        const eggMoves = useSortMoves(pokeInfo.value.moves, "egg")
+        const machineMoves = useSortMoves(pokeInfo.value.moves, "machine")
+        const levelUpMoves = useSortMoves(pokeInfo.value.moves, "level-up")
+        const tutorMoves = useSortMoves(pokeInfo.value.moves, "tutor")
 
         const statTotal = ref(null)
-        
+
         pokeInfo.value.stats.map((stat) => {
             statTotal.value += stat.base_stat
         })
@@ -11627,7 +11661,14 @@ export default {
         pokeInfo.value.height = (pokeInfo.value.height / 10)
         pokeInfo.value.weight = (pokeInfo.value.weight / 10)
 
-        return { pokeInfo, statTotal };
+        return { 
+            pokeInfo, 
+            statTotal, 
+            eggMoves, 
+            machineMoves, 
+            levelUpMoves, 
+            tutorMoves 
+        };
     },
 };
 </script>
