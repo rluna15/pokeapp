@@ -1,12 +1,10 @@
 <template>
-    <div v-if="error">{{ error }}</div>
-    <div class="list-container" v-if="pokeList.length">
-        <div v-for="(poke, index) in pokeList" :key="index">
-            <poke-card :poke="poke" />
+    <div class="list-container">
+        <div v-for="(poke, index) in pokeList.pokemon_entries" :key="index">
+            <div v-if="index < 905">
+                <poke-card :poke="poke"/>
+            </div>
         </div>
-    </div>
-    <div v-else>
-        <spinner />
     </div>
 </template>
 
@@ -20,11 +18,11 @@ export default {
     name: "PokeList",
     components: { Spinner, PokeCard },
     setup() {
-        const { getList, pokeList, error } = getPokeList(1);
+        const { pokeList, getList, error } = getPokeList()
 
-        getList();
+        getList()
 
-        return { pokeList, error };
+        return { pokeList, error }
     },
 };
 </script>
