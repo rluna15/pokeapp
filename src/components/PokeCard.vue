@@ -1,5 +1,5 @@
 <template>
-    <img class="card-img" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.entry_number}.png`">
+    <img :title="poke.pokemon_species.name" class="card-img" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.entry_number}.png`">
 </template>
 
 <script>
