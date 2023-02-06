@@ -33,21 +33,7 @@
             <dl class="stats">
                 <dt class="heading">Base Stats:</dt>
                 <dd>
-                    <table>
-                        <tbody>
-                            <tr
-                                v-for="(stat, index) in pokeInfo.stats"
-                                :key="index"
-                            >
-                                <td class="stat">{{ stat.stat.name }}</td>
-                                <td class="stat-value">{{ stat.base_stat }}</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td class="stat-value">{{ statTotal }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <stats-table :stats="pokeInfo.stats"/>
                 </dd>
                 <dd>
                     <stats-chart :stats="pokeInfo.stats" :name="pokeInfo.name"/>
@@ -110,9 +96,10 @@ import Spinner from "./Spinner.vue";
 import TypeButton from "./TypeButton.vue";
 import MoveButton from "./MoveButton.vue";
 import StatsChart from "./StatsChart.vue";
+import StatsTable from "./StatsTable.vue";
 
 export default {
-    components: { Spinner, TypeButton, MoveButton, StatsChart },
+    components: { Spinner, TypeButton, MoveButton, StatsChart, StatsTable },
     name: "PokeDetails",
     props: ["poke"],
     setup() {
@@ -11656,18 +11643,11 @@ export default {
             return a.version_group_details[a.version_group_details.length - 1].level_learned_at - b.version_group_details[b.version_group_details.length - 1].level_learned_at 
         })
 
-        const statTotal = ref(null)
-
-        pokeInfo.value.stats.map((stat) => {
-            statTotal.value += stat.base_stat
-        })
-
         pokeInfo.value.height = (pokeInfo.value.height / 10)
         pokeInfo.value.weight = (pokeInfo.value.weight / 10)
 
         return { 
-            pokeInfo, 
-            statTotal, 
+            pokeInfo,
             eggMoves, 
             machineMoves, 
             levelUpMoves, 
@@ -11699,14 +11679,6 @@ dl {
 }
 .abilities > dd {
     display: inline;
-}
-.stat {
-    text-transform: capitalize;
-}
-.stat-value {
-    font-weight: bold;
-    padding-left: 1rem;
-    text-align: right;
 }
 .moves {
     width: 100%;
