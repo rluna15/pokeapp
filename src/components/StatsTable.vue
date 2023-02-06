@@ -21,8 +21,6 @@ export default {
     setup(props) {
         const statTotal = ref(null);
 
-        console.log(props.stats)
-
         props.stats.map((stat) => {
             statTotal.value += stat.base_stat;
         });
