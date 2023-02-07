@@ -4,10 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 import PokeList from './components/PokeList.vue';
 import PokeDetails from './components/PokeDetails.vue';
+import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'Home',
-  components: { PokeList, PokeDetails },
+  components: { PokeList, PokeDetails, NavBar },
   setup() {
 
   }
@@ -16,8 +17,7 @@ export default {
 </script>
 
 <template>
-  <!-- <poke-list/> -->
-  <poke-details/>
+  <nav-bar/>
 </template>
 
 <style scoped>
