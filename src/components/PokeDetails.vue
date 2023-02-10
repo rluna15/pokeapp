@@ -140,6 +140,9 @@ export default {
     width: fit-content;
     height: fit-content;
 }
+.name img, .info img {
+    image-rendering: pixelated;
+}
 .title .name {
     text-transform: capitalize;
     font-weight: bold;

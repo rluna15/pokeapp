@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style scoped>
+.card-img {
+    image-rendering: pixelated;
+}
 .card-img:hover{
     outline: 1px solid white;
     border-radius: 10px;
