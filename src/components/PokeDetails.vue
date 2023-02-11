@@ -42,7 +42,7 @@
             <dl class="moves">
                 <dt class="heading">Moves:</dt>
                 <dd>
-                    <ul>
+                    <ul v-if="levelUpMoves.length != 0">
                         Level-Up Moves:
                         <li
                             v-for="(move, index) in levelUpMoves"
@@ -51,7 +51,7 @@
                         <move-button :move="move"/>
                         </li>
                     </ul>
-                    <ul>
+                    <ul v-if="machineMoves.length != 0">
                         Machine Moves:
                         <li
                             v-for="(move, index) in machineMoves"
@@ -60,7 +60,7 @@
                         <move-button :move="move"/>
                         </li>
                     </ul>
-                    <ul>
+                    <ul v-if="eggMoves.length != 0">
                         Egg Moves:
                         <li
                             v-for="(move, index) in eggMoves"
@@ -69,7 +69,7 @@
                         <move-button :move="move"/>
                         </li>
                     </ul>
-                    <ul>
+                    <ul v-if="tutorMoves.length != 0">
                         Tutor Moves:
                         <li
                             v-for="(move, index) in tutorMoves"
