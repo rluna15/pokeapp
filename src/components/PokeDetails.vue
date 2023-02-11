@@ -22,7 +22,7 @@
             </dl>
             <dl class="size">
                 <dt class="heading">Size:</dt>
-                <dd>{{ pokeInfo.height }} m, {{ pokeInfo.weight }} kg</dd>
+                <dd>{{ pokeHeight }} m, {{ pokeWeight }} kg</dd>
             </dl>
             <dl class="abilities">
                 <dt class="heading">Abilities:</dt>
@@ -39,7 +39,7 @@
                     <stats-chart :stats="pokeInfo.stats" :name="pokeInfo.name"/>
                 </dd>
             </dl>
-            <!-- <dl class="moves">
+            <dl class="moves">
                 <dt class="heading">Moves:</dt>
                 <dd>
                     <ul>
@@ -79,7 +79,7 @@
                         </li>
                     </ul>
                 </dd>
-            </dl> -->
+            </dl>
         </div>
     </div>
     <div v-else>
@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { getPoke } from "../composables/getPoke";
@@ -110,26 +110,44 @@ export default {
         const { pokeInfo, getPokeInfo, error  } = getPoke(route.params.id)
         
         getPokeInfo()
+        
+        const eggMoves = computed(() => {
+            return useSortMoves(pokeInfo.value.moves, "egg")
+        })
 
-        // const eggMoves = useSortMoves(pokeInfo.value.moves, "egg")
-        // const machineMoves = useSortMoves(pokeInfo.value.moves, "machine")
-        // const levelUpMoves = useSortMoves(pokeInfo.value.moves, "level-up")
-        // const tutorMoves = useSortMoves(pokeInfo.value.moves, "tutor")
+        const machineMoves = computed(() => {
+            return useSortMoves(pokeInfo.value.moves, "machine")
+        })
+
+        const levelUpMoves = computed(() => {
+            return useSortMoves(pokeInfo.value.moves, "level-up")
+        })
+
+        const tutorMoves = computed(() => {
+            return useSortMoves(pokeInfo.value.moves, "tutor")
+        })
 
         // levelUpMoves.sort((a, b) => {
         //     return a.version_group_details[a.version_group_details.length - 1].level_learned_at - b.version_group_details[b.version_group_details.length - 1].level_learned_at 
         // })
 
-        // pokeInfo.value.height = (pokeInfo.value.height / 10)
-        // pokeInfo.value.weight = (pokeInfo.value.weight / 10)
+        const pokeHeight = computed(() => {
+            return pokeInfo.value.height = (pokeInfo.value.height / 10)
+        })
+
+        const pokeWeight = computed(() => {
+            return pokeInfo.value.weight = (pokeInfo.value.weight / 10)
+        })
 
         return { 
             pokeInfo,
             error,
-            // eggMoves, 
-            // machineMoves, 
-            // levelUpMoves, 
-            // tutorMoves 
+            eggMoves, 
+            machineMoves, 
+            levelUpMoves, 
+            tutorMoves ,
+            pokeHeight,
+            pokeWeight
         };
     },
 };
