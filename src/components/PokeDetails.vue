@@ -120,16 +120,16 @@ export default {
         })
 
         const levelUpMoves = computed(() => {
-            return useSortMoves(pokeInfo.value.moves, "level-up")
+            let moves = useSortMoves(pokeInfo.value.moves, "level-up")
+
+            return moves.sort((a, b) => {
+                return a.version_group_details[a.version_group_details.length - 1].level_learned_at - b.version_group_details[b.version_group_details.length - 1].level_learned_at 
+            })
         })
 
         const tutorMoves = computed(() => {
             return useSortMoves(pokeInfo.value.moves, "tutor")
         })
-
-        // levelUpMoves.sort((a, b) => {
-        //     return a.version_group_details[a.version_group_details.length - 1].level_learned_at - b.version_group_details[b.version_group_details.length - 1].level_learned_at 
-        // })
 
         const pokeHeight = computed(() => {
             return pokeInfo.value.height = (pokeInfo.value.height / 10)
