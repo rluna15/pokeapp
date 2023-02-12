@@ -3,8 +3,9 @@
         <span class="move-name">{{move.version_group_details[move.version_group_details.length -1 ].level_learned_at}} - {{ move.move.name }}</span>
         <span v-if="moveInfo"><type-button :type="moveInfo.type"/></span>
         <span v-if="moveInfo"><damage-button :damageClass="moveInfo.damage_class"/></span>
-        <span v-if="moveInfo">PP: {{ moveInfo.pp }}</span>
-        <span v-if="moveInfo">Accuracy: {{ moveInfo.accuracy }}</span>
+        <span v-if="moveInfo"><span v-if="moveInfo.power">Power: {{ moveInfo.power }}</span><span v-else>-</span></span>
+        <span v-if="moveInfo"><span v-if="moveInfo.pp">PP: {{ moveInfo.pp }}</span><span v-else>-</span></span>
+        <span v-if="moveInfo"><span v-if="moveInfo.accuracy">Accuracy: {{ moveInfo.accuracy }}</span><span v-else>-</span></span>
     </a>
 </template>
 
