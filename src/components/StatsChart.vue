@@ -37,7 +37,7 @@ export default {
         })
 
         const chartData = {
-            labels: ["Hp", "Attack", "Defence", "Sp-Attack", "Sp-Defense", "Speed"],
+            labels: ["Hp", "Attack", "Defense", "Sp-Attack", "Sp-Defense", "Speed"],
             datasets: [
                 { 
                     label: pokeName,
