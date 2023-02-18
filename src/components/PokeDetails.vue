@@ -30,6 +30,9 @@
                     <a href="">{{ ability.ability.name }}</a>
                 </dd>
             </dl>
+            <dl>
+                <evolution-chain :EvChain="pokeInfo.species.url"/>
+            </dl>
             <dl class="stats">
                 <dt class="heading">Base Stats:</dt>
                 <dd>
@@ -39,7 +42,7 @@
                     <stats-chart :stats="pokeInfo.stats" :name="pokeInfo.name"/>
                 </dd>
             </dl>
-            <dl class="moves">
+            <dl v-if="false" class="moves">
                 <dt class="heading">Moves:</dt>
                 <dd>
                     <ul v-if="levelUpMoves.length != 0">
@@ -99,9 +102,10 @@ import TypeButton from "./TypeButton.vue";
 import MoveButton from "./MoveButton.vue";
 import StatsChart from "./StatsChart.vue";
 import StatsTable from "./StatsTable.vue";
+import EvolutionChain from "./EvolutionChain.vue";
 
 export default {
-    components: { Spinner, TypeButton, MoveButton, StatsChart, StatsTable },
+    components: { Spinner, TypeButton, MoveButton, StatsChart, StatsTable, EvolutionChain },
     name: "PokeDetails",
     props: ["poke"],
     setup() {
@@ -178,6 +182,10 @@ dl {
 }
 .abilities > dd {
     display: inline;
+}
+.abilities dd:not(:nth-child(1)),
+.abilities dd:not(:nth-last-child()){
+    margin-left: 10px;
 }
 .moves {
     width: 100%;
