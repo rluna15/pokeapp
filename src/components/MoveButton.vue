@@ -14,7 +14,7 @@ import { ref } from '@vue/reactivity';
 import { getMove } from '../composables/getMove.js'
 
 import TypeButton from './TypeButton.vue';
-import DamageButton from './damageButton.vue';
+import DamageButton from './DamageButton.vue';
 
 export default {
     name: "MoveButton",
