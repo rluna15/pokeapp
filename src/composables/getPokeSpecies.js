@@ -1,12 +1,12 @@
 import { ref } from 'vue'
 
-export function getPokeSpecies(url) {
+export function getPokeSpecies(id) {
     const pokeSpeciesInfo = ref(null)
     const error = ref(null)
 
     const getSpecies = async () => {
         try {
-            let data = await fetch(url)
+            let data = await fetch('https://pokeapi.co/api/v2/pokemon-species/' + id)
 
             if (!data.ok) {
                 throw Error('Could not fetch data')
