@@ -1,5 +1,5 @@
 <template>
-    <div v-if="error">{{ error }}</div>
+    <div v-if="pError">{{ pError }}</div>
     <div class="details-container" v-if="pokeInfo">
         <div class="title">
             <h1 class="name">
@@ -30,8 +30,8 @@
                     <a href="">{{ ability.ability.name }}</a>
                 </dd>
             </dl>
-            <dl>
-                <evolution-chain :EvChain="pokeInfo.species.url"/>
+            <dl v-if="pokeSpeciesInfo">
+                <evolution-chain :EvChain="pokeSpeciesInfo.evolution_chain.url"/>
             </dl>
             <dl class="stats">
                 <dt class="heading">Base Stats:</dt>
@@ -95,6 +95,7 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { getPoke } from "../composables/getPoke";
+import { getPokeSpecies } from "../composables/getPokeSpecies";
 import { useSortMoves } from "../composables/useFilterMoves";
 
 import Spinner from "./Spinner.vue";
@@ -111,9 +112,13 @@ export default {
     setup() {
         const route = useRoute()
         
-        const { pokeInfo, getPokeInfo, error  } = getPoke(route.params.id)
+        const { pokeInfo, getPokeInfo, error: pError  } = getPoke(route.params.id)
         
         getPokeInfo()
+
+        const { pokeSpeciesInfo, getSpecies, error: sError} = getPokeSpecies(route.params.id)
+
+        getSpecies()
         
         const eggMoves = computed(() => {
             return useSortMoves(pokeInfo.value.moves, "egg")
@@ -145,13 +150,15 @@ export default {
 
         return { 
             pokeInfo,
-            error,
+            pError,
+            sError,
             eggMoves, 
             machineMoves, 
             levelUpMoves, 
             tutorMoves ,
             pokeHeight,
-            pokeWeight
+            pokeWeight,
+            pokeSpeciesInfo
         };
     },
 };
