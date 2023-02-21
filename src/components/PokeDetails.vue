@@ -190,8 +190,7 @@ dl {
 .abilities > dd {
     display: inline;
 }
-.abilities dd:not(:nth-child(1)),
-.abilities dd:not(:nth-last-child()){
+.abilities dd:last-child {
     margin-left: 10px;
 }
 .moves {
