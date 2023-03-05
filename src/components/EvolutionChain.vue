@@ -79,5 +79,13 @@ export default {
 </script>
 
 <style scoped>
+img {
+    image-rendering: pixelated;
+}
 
+img:hover {
+    outline: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
 </style>
